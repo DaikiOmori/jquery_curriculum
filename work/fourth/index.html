@@ -14,7 +14,7 @@
       <ul class="menu__list clearfix">
         <li>
           <p class="menu__list__title">Animal</p>
-          <ul class="menu__list__childList" style="display: none;">
+          <ul class="menu__list__childList" style="height:156px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px; display: none;">
             <li>
               <p class="menu__list__childList__title">Lion</p>
             </li>
@@ -31,7 +31,7 @@
         </li>
         <li>
           <p class="menu__list__title">Plant</p>
-          <ul class="menu__list__childList" style="display: none;">
+          <ul class="menu__list__childList" style="height:117px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px; display: none;">
             <li>
               <p class="menu__list__childList__title">Cedar</p>
             </li>
@@ -47,6 +47,15 @@
     </div>
     <script src="../../common/js/jquery.js"></script>
     <script>
+      $(function(){
+        $(".menu__list__title").hover(function(){
+          $(this).next(".menu__list__childList").stop(true).slideDown("fast");
+        },
+        function(){
+          $(this).next(".menu__list__childList").slideUp();
+        });
+
+      });
       // 今回やるのはドロップメニューです。
       // メニューをhoverすると隠れている中のメニューが表示され、メニューから離れると中のメニューが非表示されるプログラムです。
       // [使用するメソッド]
