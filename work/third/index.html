@@ -25,12 +25,16 @@
     <script src="../../common/js/jquery.js"></script>
     <script>
       $(function(){
-        $('.nav').find('li').click(function(){
+        $('.nav li').click(function(){
           var num = $(this).index();
-          $('.contents').find('li').addClass('is-hidden');
-          $('.contents').find('li').eq(num).removeClass('is-hidden');
+          $('.contents li').addClass('is-hidden');
+          $('.contents li').eq(num).removeClass('is-hidden');
         });
       });
+
+      //navクラスの中のliタグをクリックした時イベントを発火させる機能を記述。
+      //まずliタグの添字を取得して変数numに格納。contentsクラスの中のliタグに対してまずis-hiddenクラスを追加して
+      //その中でnumと同じインデックス番号のものに対してはis-hiddenクラスを削除する。
       // 今回やるのはタブメニューです。
       // navの小要素であるliをクリックして、contents内の小要素であるli要素を表示させる。
       // .index() 要素のindexを取得します。
