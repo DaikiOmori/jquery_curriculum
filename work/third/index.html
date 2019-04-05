@@ -27,8 +27,7 @@
       $(function(){
         $('.nav li').click(function(){
           var num = $(this).index();
-          $('.contents li').addClass('is-hidden');
-          $('.contents li').eq(num).removeClass('is-hidden');
+          $('.contents li').addClass('is-hidden').eq(num).removeClass('is-hidden');
         });
       });
 
