@@ -84,7 +84,7 @@
              } else if (error === 'number of allowed requests has been exceeded for this API. please try again soon.'){
                $(this).prepend('<p class="message">検索ボタンを連打しないでください。</p>');
              } else{
-              $(this).prepend('<p class="message">検索キーワードは半角英数字２文字以上で入力してください。</p>');
+              $(this).prepend('<p class="message">検索キーワードは漢字は１文字、ひらがな、カタカナ、数字、ローマ字は２文字以上入力してください。</p>');
              }
             });
             }

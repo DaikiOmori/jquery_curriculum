@@ -18,15 +18,24 @@
     <script>
       $(function(){
         $.ajax({
+          type: 'GET',
+              datatype: 'json',
           url: './data.json',
         })
 
         .done(function(data) {
-          var num = data.colorsArray.length;
-          for(var i=0; i<num; i++){
-              $('.colorList').append('<li class="colorList__item"><p class="colorList__title" style="background-color:'+ data.colorsArray[i].hexValue + ';">' + data.colorsArray[i].colorName+ '</p></li>');
-              console.log(data);
-            };
+        var dataArray = data.colorsArray
+        console.log(dataArray);
+        $.each(dataArray,function(index,Dataarray){
+          var list = $('<li class="colorList__item"><p class="colorList__title" style="background-color:'+ Dataarray.hexValue + ';">' + Dataarray.colorName+ '</p></li>');
+          $('.colorList').append(list);
+        })
+        
+          //var num = data.colorsArray.length;
+          //for(var i=0; i<num; i++){
+              //$('.colorList').append('<li class="colorList__item"><p class="colorList__title" style="background-color:'+ data.colorsArray[i].hexValue + ';">' + data.colorsArray[i].colorName+ '</p></li>');
+              //console.log(data);
+            //};
       });
     });
       // [使うメソッド]
