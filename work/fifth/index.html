@@ -86,16 +86,14 @@
     <script>
       $(function(){
         $('.select').change(function(){
-          var i = $(this).val();
-          if (i=='all') {
-            $('ul.list li').each(function(){
-              $(this).show()});
+          var value = $(this).val();
+          $("ul.list li").hide();
+          if (value === 'all') {
+            $('ul.list li').show();
           } else {
             $('ul.list li').each(function(){
-              if($(this).data("category-type")==i){
+              if($(this).data("category-type") === value){
                 $(this).show();
-              } else {
-                $(this).hide();
               }
             });
           }

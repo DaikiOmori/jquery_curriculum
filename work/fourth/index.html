@@ -49,9 +49,9 @@
     <script>
       $(function(){
         $('.menu__list__parent').hover(function(){
-          $(this).children('.menu__list__childList').stop(true).slideDown();
+          $(this).children('.menu__list__childList').stop().slideDown();
         },function(){
-          $(this).children('.menu__list__childList').slideUp();
+          $(this).children('.menu__list__childList').stop().slideUp();
         });
       });
 
