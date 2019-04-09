@@ -57,13 +57,13 @@
                 booksGenreId: '001',
               }
               }).done(function(data) {
-                buildlist(data);
+                done(data);
               
               }).fail(function(data){
                 fail(data);    
               });
 
-          function buildlist(data) {
+          function done(data) {
             if (0 < data.count){
             var list = '';
             $.each(data.Items,function(index,item){
