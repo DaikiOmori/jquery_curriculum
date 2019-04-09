@@ -87,7 +87,8 @@
       $(function(){
         $('.select').change(function(){
           var value = $(this).val();
-          $("ul.list li").hide();
+          $('ul.list li').hide();
+          
           if (value === 'all') {
             $('ul.list li').show();
           } else {

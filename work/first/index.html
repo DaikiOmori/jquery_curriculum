@@ -122,6 +122,75 @@
       $('#q11').find('li').eq(num).addClass('large');
     });
   });
+
+
+  $(function(){
+        var pageNum = 0;
+        var previousword = '';
+        $(".search__btn").on ('click',function(){
+            var keyword = $('#js-search-word').val();
+            if (previousword === keyword){
+              pageNum = pageNum + 1;
+            } else {
+              $('.lists').empty();
+              pageNum = 1;
+            }
+            
+            previousword = keyword;
+
+        $.ajax({
+              url: 'https://app.rakuten.co.jp/services/api/BooksTotal/Search/20130522',
+              type: 'GET',
+              datatype: 'json',
+              data: {
+                page: pageNum,
+                keyword: keyword,
+                hits: 20,
+                applicationId: '1019399324990976605', 
+                booksGenreId: '001',
+               }
+        }).done(function(data) {
+          if (0 < data.count){
+            var list = '';
+             $.each(data.Items,function(index,item){
+               list += "<li class='lists__item'>" + 
+                "<div class='lists__item__inner'>" +
+                "<a href='" + item.Item.itemUrl + 
+　　　　　　　　　　"'class='lists__item__link' target='_blank'>" + 
+                "<img src='" + item.Item.mediumImageUrl +
+　　　　　　　　　 "' class='lists__item__img' alt>" +
+                "<p class='lists__item__detail'>作品名：　" + 
+　　　　　　　　　　item.Item.title + '</p>' +
+                "<p class='lists__item__detail'>作者　：　" + 
+　　　　　　　　　　item.Item.author + '</p>' +
+                "<p class='lists__item__detail'>出版社：　" +
+　　　　　　　　　　 item.Item.publisherName + '</p>' + '</a>' +
+                '</div>' + '</li>';
+             })
+             $('.lists').prepend(list);
+
+           } else {
+             $('.lists').html('<p class="message">検索結果が見つかりませんでした。<br>別のキーワードで検索して下さい。</p>');
+           }
+         }).fail(function(data){
+          $('.lists').empty();
+          if (data.readyState === 0){
+            $('.lists').prepend('<p class="message">通信に失敗しました。<br>接続を確認してください。</p>');
+          } else {
+            $('.lists').each(function(){
+            var error = data.responseJSON.error_description
+            if (error === 'keyword must be set'){
+               $(this).prepend('<p class="message">検索キーワードを入力して下さい。</p>');
+            } else if (error === 'number of allowed requests has been exceeded for this API. please try again soon.'){
+               $(this).prepend('<p class="message">検索ボタンを連打しないでください。</p>');
+            } else{
+              $(this).prepend('<p class="message">検索キーワードは漢字は１文字、ひらがな、カタカナ、数字、ローマ字は２文字以上入力してください。</p>');
+            }
+          });
+          }
+        })
+      });
+    });
 </script>
 </body>
 </html>
