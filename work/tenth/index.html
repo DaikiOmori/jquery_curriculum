@@ -68,18 +68,20 @@
             var list = '';
             $.each(data.Items,function(index,item){
             list += "<li class='lists__item'>" + 
-            "<div class='lists__item__inner'>" +
-            "<a href='" + item.Item.itemUrl + 
-　　　　　　　 "'class='lists__item__link' target='_blank'>" + 
-            "<img src='" + item.Item.mediumImageUrl +
-　　　　　　　"' class='lists__item__img' alt>" +
-            "<p class='lists__item__detail'>作品名：　" + 
-　　　　　　　item.Item.title + '</p>' +
-            "<p class='lists__item__detail'>作者　：　" + 
-　　　　　　　item.Item.author + '</p>' +
-            "<p class='lists__item__detail'>出版社：　" +
-　　　　　　　item.Item.publisherName + '</p>' + '</a>' +
-            '</div>' + '</li>';
+                      "<div class='lists__item__inner'>" +
+                        "<a href='" + item.Item.itemUrl + 
+　　　　　　　            "'class='lists__item__link' target='_blank'>" + 
+                          "<img src='" + item.Item.mediumImageUrl +
+　　　　　　　               "' class='lists__item__img' alt>" +
+                          "<p class='lists__item__detail'>作品名：　" + 
+　　　　　　　              item.Item.title + '</p>' +
+                          "<p class='lists__item__detail'>作者　：　" + 
+　　　　　　　              item.Item.author + '</p>' +
+                          "<p class='lists__item__detail'>出版社：　" +
+　　　　　　　              item.Item.publisherName + '</p>' + 
+                        '</a>' +
+                      '</div>' +  
+                    '</li>';
             })
             $('.lists').prepend(list);
             } else {
